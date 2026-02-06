@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Oswald', sans-serif;
+
+  /* Military Khaki Palette - Professional & Trustworthy */
+  --background: 45 29% 97%; /* Very light cream/khaki tint */
+  --foreground: 120 10% 10%; /* Dark near-black olive */
+
+  --card: 40 20% 94%;
+  --card-foreground: 120 10% 10%;
+
+  --popover: 40 20% 94%;
+  --popover-foreground: 120 10% 10%;
+
+  /* Primary Action Color - Strong Khaki Green */
+  --primary: 85 45% 35%; 
+  --primary-foreground: 60 30% 96%;
+
+  /* Secondary - Lighter Tan/Khaki */
+  --secondary: 42 25% 88%;
+  --secondary-foreground: 85 45% 20%;
+
+  /* Muted elements */
+  --muted: 60 10% 90%;
+  --muted-foreground: 80 10% 40%;
+
+  /* Accent - Perhaps a subtle alert color or highlight */
+  --accent: 35 80% 55%; /* Gold/Orange hint for urgency */
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 85 15% 80%;
+  --input: 85 15% 80%;
+  --ring: 85 45% 35%;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight uppercase text-foreground;
+  }
+}
+
+@layer components {
+  .military-card {
+    @apply bg-white border border-border shadow-sm rounded-xl p-6 transition-all duration-300 hover:shadow-md hover:border-primary/40 relative overflow-hidden;
+  }
+  
+  .military-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-primary/0 transition-colors duration-300;
+  }
+
+  .military-card:hover::before {
+    @apply bg-primary;
+  }
+  
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .bg-pattern-camo {
+    background-image: radial-gradient(#606c38 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: hsl(var(--secondary) / 0.1);
+  }
+}
