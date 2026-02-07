@@ -65,6 +65,10 @@ export async function registerRoutes(
     const allRequests = storage.getAllRequests();
     res.json(allRequests);
   });
+  app.delete("/api/admin/requests/:id", (req, res) => {
+  storage.deleteRequest(parseInt(req.params.id));
+  res.status(204).send();
+});
 
   return httpServer;
 }
